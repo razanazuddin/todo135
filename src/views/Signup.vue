@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h1>Sign up</h1>
-    <div class="w-full max-w-xs">
+    <div class="w-full max-w-xs my-8">
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
@@ -17,11 +16,16 @@
           <p class="text-red-500 text-xs italic">Please choose a password.</p>
         </div>
         <div class="flex items-center justify-between">
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+          <button class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" v-on:click="signup">
             Sign Up
           </button>
         </div>
       </form>
+    </div>
+    <div class="w-full text-center">
+      <router-link to="/signup" class="text-sm text-teal-500 hover:text-teal-800">
+        Already signed up? Log in to start.
+      </router-link>
     </div>
   </div>
 </template>
@@ -37,10 +41,11 @@ export default {
     }
   },
   methods: {
-    signUp: () => {
+    signup () {
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(
         (user) => {
           window.alert('Success! You can log in and start creating your list :)')
+          this.$router.replace('home')
         },
         (err) => {
           window.alert('Oops! ' + err.message)
