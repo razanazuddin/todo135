@@ -44,15 +44,10 @@ export default {
   },
   methods: {
     login () {
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
-        (user) => {
-          window.alert('You are now logged in. Welcome!')
-          this.$router.replace('home')
-        },
-        (err) => {
-          window.alert('Oops! ' + err.message)
-        }
-      )
+      this.$store.dispatch('userLogin', {
+        email: this.email,
+        password: this.password
+      });
     }
   }
 }

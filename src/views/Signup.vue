@@ -42,15 +42,10 @@ export default {
   },
   methods: {
     signup () {
-      firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(
-        (user) => {
-          window.alert('Success! You can log in and start creating your list :)')
-          this.$router.replace('home')
-        },
-        (err) => {
-          window.alert('Oops! ' + err.message)
-        }
-      )
+      this.$store.dispatch('userSignup', {
+        email: this.email,
+        password: this.password
+      })
     }
   }
 }
