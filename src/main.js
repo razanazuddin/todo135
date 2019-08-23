@@ -10,13 +10,13 @@ Vue.config.productionTip = false
 let app = ''
 
 firebase.initializeApp({
-  apiKey: 'AIzaSyDxjFbZQE2iVPY2eh_HodokdrwHvFaKxoQ',
-  authDomain: 'todo-135.firebaseapp.com',
-  databaseURL: 'https://todo-135.firebaseio.com',
-  projectId: 'todo-135',
-  storageBucket: '',
-  messagingSenderId: '811286683640',
-  appId: '1:811286683640:web:7e7ea98cd8bd1cb8'
+  apiKey: process.env.FIREBASE_APIKEY,
+  authDomain: process.env.FIREBASE_AUTHDOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASEURL,
+  projectId: process.env.PROJECTID,
+  storageBucket: process.env.STORAGEBUCKET,
+  messagingSenderId: process.env.MESSAGINGSENDERID,
+  appId: process.env.APPID
 })
 
 firebase.auth().onAuthStateChanged(() => {
